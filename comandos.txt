@@ -1,0 +1,22 @@
+path jars
+	'/home/danny/Transferências/stanford-parser.jar'
+	'/home/danny/Transferências/stanford-parser-3.7.0-models.jar'
+
+Java 
+	javac -cp /home/danny/Transferências/stanford-parser.jar:/home/danny/Transferências/stanford-parser-3.7.0-models.jar Parser.java
+
+Vowpal Wabbit
+	training step
+	vw ../Py/xml_/data_trainv_parsed.txt -l 10 -c --passes 25 --holdout_off -f parsed_m.model
+
+	testing step
+	vw -t --cache_file cache_test -i parsed_m.model -p p_out ../Py/xml_/data_testv_parsed.txt
+
+
+
+java -cp ../jars/stanford-parser.jar:../jars/stanford-parser-3.7.0-models.jar:../jars/google-collections-1.0.jar:. Parser.java
+
+javac -cp ../jars/stanford-parser.jar:../jars/stanford-parser-3.7.0-models.jar:../jars/google-collections-1.0.jar:. Parser
+
+
+
